@@ -34,6 +34,7 @@ exports.sign_up_post = [
       res.render("sign-up-form", {
         title: "sign-up",
         errors: [{ msg: "user exists" }],
+        user: req.user,
       });
     } else {
       const user = new User({

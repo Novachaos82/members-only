@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const auth_controller = require("../controllers/auth-controller");
 const index_page_controller = require("../controllers/index-page-controller");
+const message_controller = require("../controllers/messsage-controller");
 /* GET home page. */
 router.get("/", index_page_controller.index);
 
@@ -11,5 +12,8 @@ router.get("/login", auth_controller.login_get);
 router.post("/login", auth_controller.log_in_post);
 router.get("/logout", auth_controller.log_out_get);
 router.get("/authenticated", auth_controller.check_authentication);
+
+router.get("/create-message", message_controller.message_create_get);
+router.post("/create-message", message_controller.message_create_post);
 
 module.exports = router;
