@@ -8,6 +8,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const LocalStrategy = require("passport-local").Strategy;
 const MongoStore = require("connect-mongo");
+const bcrypt = require("bcryptjs");
 const User = require("./models/userModel");
 var indexRouter = require("./routes/index");
 
@@ -35,10 +36,13 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password" });
-      }
-      return done(null, user);
+      bcrypt.compare(password, user.password, function (err, result) {
+        if (result === true) {
+          return done(null, user);
+        } else {
+          return done(null, false, { message: "Incorrect password" });
+        }
+      });
     } catch (err) {
       return done(err);
     }

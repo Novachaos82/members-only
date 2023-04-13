@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const async = require("async");
 const { body, validationResult } = require("express-validator");
 const passport = require("passport");
+const bcrypt = require("bcryptjs");
 
 exports.sign_up_get = function (req, res, next) {
   res.render("sign-up-form", { title: "Sign Up" });
@@ -26,10 +27,10 @@ exports.sign_up_post = [
     .custom((value, { req }) => value === req.body.password),
   async (req, res, next) => {
     const errors = validationResult(req);
-
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = new User({
       username: req.body.username,
-      password: req.body.password,
+      password: hashedPassword,
       member: false,
       admin: false,
     });
