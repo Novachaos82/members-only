@@ -5,11 +5,11 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
 exports.sign_up_get = function (req, res, next) {
-  res.render("sign-up-form", { title: "Sign Up" });
+  res.render("sign-up-form", { title: "Sign Up", user: req.user });
 };
 
 exports.login_get = function (req, res, next) {
-  res.render("login-form", { title: "Log In" });
+  res.render("login-form", { title: "Log In", user: req.user });
 };
 
 exports.sign_up_post = [
@@ -28,20 +28,33 @@ exports.sign_up_post = [
   async (req, res, next) => {
     const errors = validationResult(req);
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    const user = new User({
-      username: req.body.username,
-      password: hashedPassword,
-      member: false,
-      admin: false,
-    });
-    if (!errors.isEmpty()) {
-      res.render("sign-up-form", { errors: errors.array() });
+
+    const userExists = await User.find({ username: req.body.username });
+    if (userExists.length > 0) {
+      res.render("sign-up-form", {
+        title: "sign-up",
+        errors: [{ msg: "user exists" }],
+      });
     } else {
-      try {
-        await user.save();
-        res.redirect("/");
-      } catch (err) {
-        return next(err);
+      const user = new User({
+        username: req.body.username,
+        password: hashedPassword,
+        member: false,
+        admin: false,
+      });
+      if (!errors.isEmpty()) {
+        console.log(errors.array());
+        res.render("sign-up-form", {
+          title: "sign-up",
+          errors: errors.array(),
+        });
+      } else {
+        try {
+          await user.save();
+          res.redirect("/");
+        } catch (err) {
+          return next(err);
+        }
       }
     }
   },

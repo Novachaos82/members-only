@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
+  <%- include('./header.ejs') %>
   <body>
     <%- include('./navbar.ejs') %>
     <h1><%= title %></h1>
-    <p>Contains messages</p>
-    <a href="/logout">logout</a>
+    <p class="bolding">Contains messages</p>
+    <% if (user) {%>
+    <p class="bolding">Welcome <%= user.username %></p>
+    <% }else {%>
+    <p class="bolding">You are not logged in</p>
+    <% }%>
   </body>
 </html>

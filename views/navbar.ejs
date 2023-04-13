@@ -1,1 +1,9 @@
-<p>Layout</p>
+<div class="navbar">
+  <% if (!user) {%>
+  <a class="links" href="/sign-up">Sign Up</a>
+  <a class="links" href="/login">Login</a>
+  <% } else {%>
+  <p class="links">Welcome <%= user.username %>!</p>
+  <a class="links" href="/logout">Logout</a>
+  <% } %>
+</div>
