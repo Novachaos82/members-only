@@ -23,4 +23,6 @@ router.post("/member", user_controller.create_member_post);
 router.get("/admin", user_controller.create_admin_get);
 router.post("/admin", user_controller.create_admin_post);
 
+router.post("/delete/:id", message_controller.delete_message_post);
+
 module.exports = router;

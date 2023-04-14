@@ -43,3 +43,13 @@ exports.message_create_post = [
     }
   },
 ];
+
+exports.delete_message_post = async (req, res, next) => {
+  // Remove the message using the id from the database
+  try {
+    await Message.findByIdAndRemove(req.body.msgID);
+    res.redirect("/");
+  } catch (err) {
+    if (err) return next(err);
+  }
+};

@@ -13,12 +13,20 @@
       <%}else{%>
 
       <div class="title"><%= msg.user.username %></div>
-      <%}%>
-    </div>
+      <%}%> 
+      <% if(!user || !user.admin){ %>
+            <div></div>
+        <%}else{%>
+        <form action="/delete/<%=msg._id%>" method="POST">
+          <input type="hidden" name="msgID" value="<%=msg._id%>" />
+          <button type="submit">delete</button>
+        </form>
+        <%}%>
     <%})} %> <% if (user) {%>
     <p class="bolding">Welcome <%= user.username %></p>
     <% }else {%>
     <p class="bolding">You are not logged in</p>
     <% }%>
+    
   </body>
 </html>
