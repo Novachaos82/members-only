@@ -4,8 +4,18 @@
   <body>
     <%- include('./navbar.ejs') %>
     <h1><%= title %></h1>
-    <p class="bolding">Contains messages</p>
-    <% if (user) {%>
+    <% if(message){ message.map(msg=>{%>
+    <div class="message">
+      <div class="title"><%= msg.title %></div>
+
+      <%if(!user || !user.member){%>
+      <div class="title">you need to be a member</div>
+      <%}else{%>
+
+      <div class="title"><%= msg.user.username %></div>
+      <%}%>
+    </div>
+    <%})} %> <% if (user) {%>
     <p class="bolding">Welcome <%= user.username %></p>
     <% }else {%>
     <p class="bolding">You are not logged in</p>

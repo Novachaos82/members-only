@@ -1,6 +1,11 @@
 const User = require("../models/userModel");
-exports.index = function (req, res, next) {
+const Message = require("../models/messageModel");
+exports.index = async (req, res, next) => {
   console.log(req.user);
   console.log(req.isAuthenticated());
-  res.render("index", { title: "Express", user: req.user });
+  const messages = await Message.find()
+    .sort([["date", "descending"]])
+    .populate("user");
+  //console.log(messages);
+  res.render("index", { title: "Express", user: req.user, message: messages });
 };
