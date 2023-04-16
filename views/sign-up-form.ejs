@@ -10,20 +10,20 @@
           <label for="username">Username</label>
           <input type="text" name="username" id="username" />
           <label for="password">Password</label>
+
           <input type="password" name="password" id="password" />
           <label for="confirmPassword">Confirm Password</label>
           <input type="password" name="confirmPassword" id="confirm-password" />
+          <% if (locals.errors) { %>
+          <ul class="error-ul">
+            <% errors.forEach(function(error) { %>
+            <li class="error"><%= error.msg %></li>
+            <% }); %>
+          </ul>
+          <% } %>
           <button type="submit">sign up</button>
         </form>
       </div>
     </div>
-
-    <% if (locals.errors) { %>
-    <ul>
-      <% errors.forEach(function(error) { %>
-      <li><%= error.msg %></li>
-      <% }); %>
-    </ul>
-    <% } %>
   </body>
 </html>
