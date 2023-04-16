@@ -117,21 +117,6 @@ a {
   /*gap: 10px;*/
 }
 
-@media only screen and (max-width: 600px) {
-  .post-date {
-    font-size: 14px;
-    padding-top: 15px;
-    border-top: 2px solid white;
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
-    /*align-items: center;*/
-    /*gap: 10px;*/
-  }
-}
-
 .delete {
   cursor: pointer;
   padding: 0;
@@ -164,14 +149,14 @@ a {
   font-size: 20px;
 }
 .form-class {
-  padding: 20px;
+  padding: 5%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .form-class input {
@@ -191,7 +176,7 @@ a {
   width: 20%;
   text-align: center;
   border-radius: 10px;
-  padding: 10px;
+  padding: 2%;
   font-size: 16px;
   font-weight: bold;
   text-transform: capitalize;
@@ -210,4 +195,40 @@ a {
   bottom: 5px;
   right: 5px;
   border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .post-date {
+    font-size: 14px;
+    padding-top: 15px;
+    border-top: 2px solid white;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+    /*align-items: center;*/
+    /*gap: 10px;*/
+  }
+
+  .navbar {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    text-decoration: none;
+    gap: 20px;
+    font-size: 20px;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .links-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-class button {
+    width: auto;
+  }
 }

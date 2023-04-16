@@ -15,7 +15,7 @@ exports.create_member_post = [
         user: req.user,
         errors: errors.array(),
       });
-    } else if (req.body.passcode === "hehe") {
+    } else if (req.body.passcode === process.env.MEMBER_PASS) {
       try {
         await User.findByIdAndUpdate(req.user._id, { member: true });
         res.redirect("/");
@@ -50,7 +50,7 @@ exports.create_admin_post = [
         user: req.user,
         errors: errors.array(),
       });
-    } else if (req.body.passcode === "hoho") {
+    } else if (req.body.passcode === process.env.ADMIN_PASS) {
       try {
         await User.findByIdAndUpdate(req.user._id, { admin: true });
         res.redirect("/");
