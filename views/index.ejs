@@ -1,32 +1,51 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
   <%- include('./header.ejs') %>
   <body>
-    <%- include('./navbar.ejs') %>
-    <h1><%= title %></h1>
-    <% if(message){ message.map(msg=>{%>
-    <div class="message">
-      <div class="title"><%= msg.title %></div>
-
-      <%if(!user || !user.member){%>
-      <div class="title">you need to be a member</div>
-      <%}else{%>
-
-      <div class="title"><%= msg.user.username %></div>
-      <%}%> 
-      <% if(!user || !user.admin){ %>
+    <%- include('./partials/navbar.ejs')%>
+    <div class="all-msg">
+      <% if(message){ message.map(msg=>{%>
+      <div class="message-box">
+        <div class="title">
+          <div class=""><%= msg.title %></div>
+          <div class="delete">
+            <% if(!user || !user.admin){ %>
             <div></div>
-        <%}else{%>
-        <form action="/delete/<%=msg._id%>" method="POST">
-          <input type="hidden" name="msgID" value="<%=msg._id%>" />
-          <button type="submit">delete</button>
-        </form>
-        <%}%>
-    <%})} %> <% if (user) {%>
+            <%}else{%>
+            <form action="/delete/<%=msg._id%>" method="POST">
+              <input type="hidden" name="msgID" value="<%=msg._id%>" />
+              <button class="delete" type="submit">
+                <i class="material-icons" style="font-size: 36px">delete</i>
+              </button>
+            </form>
+
+            <%}%>
+          </div>
+        </div>
+        <div class="msg"><%= msg.message %></div>
+
+        <div class="post-date">
+          <%if(!user || !user.member){%>
+          <div class=""><b>To see user you need to be a member</b></div>
+          <%}else{%>
+          <div class=""><b>User</b>:<%= msg.user.username %></div>
+          <%}%>
+          <div class=""><%= msg.date.toLocaleString() %></div>
+        </div>
+      </div>
+      <%})} %>
+    </div>
+    <% /* %> <% if (user) {%>
+
     <p class="bolding">Welcome <%= user.username %></p>
     <% }else {%>
     <p class="bolding">You are not logged in</p>
-    <% }%>
-    
+    <% }%> <% */ %>
   </body>
 </html>

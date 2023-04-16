@@ -2,17 +2,21 @@
 <html>
   <%- include('./header.ejs') %>
   <body>
-    <%- include('./navbar.ejs') %>
-    <h1><%= title %></h1>
-    <form action="" method="POST">
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" />
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" />
-      <label for="confirmPassword">Confirm Password</label>
-      <input type="password" name="confirmPassword" id="confirm-password" />
-      <button type="submit">sign up</button>
-    </form>
+    <%- include('./partials/navbar.ejs')%>
+
+    <div class="form-div">
+      <div class="form-box">
+        <form action="" method="POST" class="form-class">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" />
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" name="confirmPassword" id="confirm-password" />
+          <button type="submit">sign up</button>
+        </form>
+      </div>
+    </div>
 
     <% if (locals.errors) { %>
     <ul>

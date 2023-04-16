@@ -2,14 +2,16 @@
 <html>
   <%- include('./header.ejs') %>
   <body>
-    <%- include('./navbar.ejs') %>
-    <h1><%= title %></h1>
-    <% if(!user.member){ %>
-    <form action="" method="post">
-      <label for="passcode">Passcode</label>
-      <input type="text" name="passcode" id="passcode" />
-      <button type="submit">submit</button>
-    </form>
+    <%- include('./partials/navbar.ejs')%> <% if(!user.member){ %>
+    <div class="form-div">
+      <div class="form-box">
+        <form action="" method="post" class="form-class">
+          <label for="passcode">Passcode</label>
+          <input type="text" name="passcode" id="passcode" />
+          <button type="submit">submit</button>
+        </form>
+      </div>
+    </div>
     <% }else{ %>
     <h1>You are already a member,dawg</h1>
     <% }%>

@@ -2,15 +2,18 @@
 <html>
   <%- include('./header.ejs') %>
   <body>
-    <%- include('./navbar.ejs') %>
-    <h1><%= title %></h1>
+    <%- include('./partials/navbar.ejs')%>
 
-    <form action="" method="POST">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="message" />
-      <label for="message">Message</label>
-      <input type="text" name="message" id="message" />
-      <button type="submit">Submit</button>
-    </form>
+    <div class="form-div">
+      <div class="form-box">
+        <form action="" method="POST" class="form-class">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="message" />
+          <label for="message">Message</label>
+          <input type="text" name="message" id="message" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

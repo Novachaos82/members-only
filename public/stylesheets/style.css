@@ -10,23 +10,40 @@ body {
 .navbar {
   background: black;
   display: flex;
-  justify-content: center;
-  color: white;
+  justify-content: space-between;
+
   text-decoration: none;
   gap: 20px;
   font-size: 20px;
-  padding: 10px;
+  padding: 20px;
+  align-items: center;
+}
+.head-navbar {
+  /*background: blue;*/
+  color: coral;
+  font-size: 30px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.navbar a {
+.head-navbar:hover {
   color: white;
+  transition: ease-in;
+  transition-duration: 250ms;
 }
+/*.links a {
+  color: white;
+}*/
 
 a {
   text-decoration: none;
 }
 
+.links-nav {
+  display: flex;
+}
 .links {
+  color: white;
+  margin-right: 10px;
   border-radius: 6px;
   padding: 6px;
   padding-left: 10px;
@@ -44,4 +61,153 @@ a {
 .links a,
 .links a:visited {
   color: black;
+}
+
+/* msg box */
+
+.all-msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  height: 100%;
+  margin-top: 5%;
+
+  margin-bottom: 5%;
+}
+.title {
+  text-transform: capitalize;
+  font-size: 32px;
+  font-style: bold;
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: space-between;
+}
+.message-box {
+  background: black;
+  color: white;
+  width: 50%;
+  height: fit-content;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  /*background: black;*/
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  /*gap: 10px;*/
+  word-break: break-all;
+}
+.msg {
+  font-size: 20px;
+}
+.post-date {
+  font-size: 14px;
+  padding-top: 15px;
+  border-top: 2px solid white;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /*align-items: center;*/
+  /*gap: 10px;*/
+}
+
+@media only screen and (max-width: 600px) {
+  .post-date {
+    font-size: 14px;
+    padding-top: 15px;
+    border-top: 2px solid white;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+    /*align-items: center;*/
+    /*gap: 10px;*/
+  }
+}
+
+.delete {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: black;
+  color: white;
+}
+.delete:hover {
+  transition: ease-in;
+  transition-duration: 0.25s;
+  color: red;
+}
+
+/* create msg page */
+.form-div {
+  display: flex;
+  justify-content: center;
+}
+.form-box {
+  margin-top: 5%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  align-items: center;
+  background: black;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+.form-class {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.form-class input {
+  outline: none;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.form-class button {
+  margin-top: 2%;
+  cursor: pointer;
+  border: none;
+  background: white;
+  color: black;
+  outline: none;
+  width: 20%;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.form-class button:hover {
+  filter: brightness(80%);
+}
+
+.stick {
+  font-size: 14px;
+  background: black;
+  color: white;
+  position: fixed;
+  padding: 10px;
+  bottom: 5px;
+  right: 5px;
+  border-radius: 10px;
 }
